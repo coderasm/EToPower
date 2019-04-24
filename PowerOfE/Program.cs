@@ -10,6 +10,10 @@ namespace PowerOfE
   {
     static void Main(string[] args)
     {
+      Console.WriteLine(MathExtended.eToPow(1));
+      Console.WriteLine(MathExtended.eToPow(3));
+      Console.WriteLine(MathExtended.eToPow(5));
+      Console.ReadKey();
     }
   }
 }
