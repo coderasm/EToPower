@@ -10,14 +10,14 @@ namespace PowerOfE
   {
     public static double eToPow(int power)
     {
-      var iterations = 13;
+      var sums = 13;
       double sum = 0;
-      for (int i = 0; i < iterations; i++)
+      for (int i = 0; i < sums; i++)
       {
         //Console.WriteLine(toPow(power, i).ToString() + " / " + factorial(i));
         sum += (double)toPow(power, i) / factorial(i);
       }
-      return ((int)(10000 * sum)) / (double)10000;
+      return sum;
     }
 
     static int toPow(int baseNum, int power)
