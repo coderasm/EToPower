@@ -14,9 +14,11 @@ namespace PowerOfE
       double sum = 1;
       var step = 1;
       double partialSum = 1;
+      //check if partial sum is smaller than minimum
       while (partialSum > epsilon)
       {
         partialSum = toPow(power, step) / factorial(step);
+        //bail if number overflows double
         if (double.IsNaN(partialSum) || double.IsPositiveInfinity(partialSum))
           break;
         sum += partialSum;
