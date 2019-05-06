@@ -8,30 +8,49 @@ namespace PowerOfE
 {
   class MathExtended
   {
-    public static double eToPow(int power)
+    public static double eToPow(double power)
     {
-      var sums = 13;
+      double error = Math.Pow(10, -7);
+      int iterations = 10000;
       double sum = 0;
-      for (int i = 0; i < sums; i++)
+      double trueValue = Math.Pow(Math.E, power);
+      for (int i = 0; i < iterations; i++)
       {
+        if (Math.Abs(sum - trueValue) < error)
+        {
+          Console.WriteLine($"Steps: {i + 1}");
+          break;
+        }
         //Console.WriteLine(toPow(power, i).ToString() + " / " + factorial(i));
-        sum += (double)toPow(power, i) / factorial(i);
+        sum += toPow(power, i) / factorial(i);
       }
       return sum;
     }
 
-    static int toPow(int baseNum, int power)
+    static double toPow(double baseNum, int power)
     {
-      if (power == 0)
-        return 1;
-      return baseNum * toPow(baseNum, power - 1);
+      double sum = 1;
+      for (int i = 0; i < power; i++)
+      {
+        sum *= baseNum;
+      }
+      return sum;
+      //if (power == 0)
+      //  return 1;
+      //return baseNum * toPow(baseNum, power - 1);
     }
     
-    static int factorial(int number)
+    static double factorial(int number)
     {
-      if (number <= 1)
-        return 1;
-      return number * factorial(number - 1);
+      double sum = 1;
+      for (int i = number; i > 1; i--)
+      {
+        sum *= i;
+      }
+      return sum;
+      //if (number <= 1)
+      //  return 1;
+      //return number * factorial(number - 1);
     }
   }
 }
