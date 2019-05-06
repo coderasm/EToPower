@@ -10,20 +10,19 @@ namespace PowerOfE
   {
     public static double eToPow(double power)
     {
-      double error = Math.Pow(10, -7);
-      int iterations = 10000;
-      double sum = 0;
-      double trueValue = Math.Pow(Math.E, power);
-      for (int i = 0; i < iterations; i++)
+      double epsilon = Math.Pow(10, -7);
+      double sum = 1;
+      var step = 1;
+      double partialSum = 1;
+      while (partialSum > epsilon)
       {
-        if (Math.Abs(sum - trueValue) < error)
-        {
-          Console.WriteLine($"Steps: {i + 1}");
+        partialSum = toPow(power, step) / factorial(step);
+        if (double.IsNaN(partialSum) || double.IsPositiveInfinity(partialSum))
           break;
-        }
-        //Console.WriteLine(toPow(power, i).ToString() + " / " + factorial(i));
-        sum += toPow(power, i) / factorial(i);
+        sum += partialSum;
+        ++step;
       }
+      Console.Write($"Steps: {step + 1}");
       return sum;
     }
 
