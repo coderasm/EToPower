@@ -1,0 +1,18 @@
+Compute each partial sum as a double.
+Compute x to a power iteratively to avoid stack overflows.
+Compute x factorial iteratively to avoid stack overflows.
+Continue computing partial sums until the partial sum
+is less than epsilon or the partial sum overflows the double
+datatype.
+When x is small the absolute/difference error is on nearly
+the same order of magnitude as the percent error.
+As x increases the absolute/difference error becomes very large
+and the percent error becomes very small.
+As x becomes very large, 100 <= x <= 100, the x^n involved in the
+partial sum, eventually overflows the double datatype.
+As x becomes larger it will approach the overflow of the double datatype
+in fewer steps.
+e^100 overflows after 156 steps. 100^156 in the partial sum
+overflows the double datatype.
+e^1000 overflows after 104 setp. 1000^104 in the partial sum
+overflows the double datatype.
